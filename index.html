@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jo Antonette Segador</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page-bg: #f0f0ee;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #555555;
+    --accent: #B45309;
+    --accent-dark: #92400E;
+    --accent-soft: #FFF7EA;
+    --line: #dddddd;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--page-bg);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── BANNER ── */
+  .banner {
+    background: var(--accent-soft);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 18px rgba(146, 64, 14, 0.12);
+    overflow: hidden;
+  }
+
+  /* This creates the subtle pastel rainbow only when someone hovers over the banner. */
+  .banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, #fff7ea 0%, #fde7f3 28%, #e7f0ff 55%, #e9f8ee 78%, #fff1dd 100%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+  }
+
+  .banner:hover::before { opacity: 1; }
+
+  .banner-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .ian-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 720px;
+  }
+
+  .ian-wave {
+    font-size: 22px;
+    animation: wave 1.4s ease-in-out infinite;
+    display: inline-block;
+    transform-origin: 70% 70%;
+    flex-shrink: 0;
+  }
+
+  @keyframes wave {
+    0%,100% { transform: rotate(0deg); }
+    20% { transform: rotate(20deg); }
+    40% { transform: rotate(-8deg); }
+    60% { transform: rotate(16deg); }
+    80% { transform: rotate(-4deg); }
+  }
+
+  .ian-text {
+    color: #2b2118;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.45;
+  }
+
+  .ian-text strong {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent-dark);
+  }
+
+  .ian-btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .ian-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 17px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+  }
+
+  .ian-btn svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
+  .ian-btn.solid {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(180, 83, 9, 0.20);
+  }
+
+  .ian-btn.solid:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(146, 64, 14, 0.24);
+  }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 860px;
+    margin: 28px auto 60px;
+    background: var(--paper);
+    box-shadow: 0 1px 16px rgba(0,0,0,0.09);
+    padding: 52px 60px;
+  }
+
+  /* HEADER */
+  .rh-name {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .rh-title {
+    text-align: center;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .rh-contact {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  .rh-contact a,
+  .rh-portfolio a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .rh-contact a:hover,
+  .rh-portfolio a:hover {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+
+  .rh-portfolio {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .csep { color: #bbb; margin: 0 7px; }
+
+  .rule {
+    border: none;
+    border-top: 1.5px solid var(--accent);
+    margin: 16px 0 18px;
+  }
+
+  .rule-thin {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 16px 0 18px;
+  }
+
+  .sh {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 9px;
+  }
+
+  .profile {
+    font-size: 13.5px;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .sr {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .sr strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .sr span { color: #444; }
+
+  .job { margin-bottom: 16px; }
+  .job:last-child { margin-bottom: 0; }
+
+  .jhead {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+    font-size: 13.5px;
+  }
+
+  .jtitle { font-weight: 700; color: var(--ink); }
+  .jsep { color: #aaa; }
+  .jco { color: #444; }
+  .jdate { color: #555; }
+
+  ul.bl {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  ul.bl li {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.65;
+    list-style-type: disc;
+  }
+
+  ul.bl li::marker {
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  .edu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .edeg {
+    font-size: 13.5px;
+    font-weight: 700;
+  }
+
+  .edate {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .eschool {
+    font-size: 13px;
+    color: #444;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 680px) {
+    .page {
+      padding: 28px 20px;
+      margin: 0;
+      box-shadow: none;
+    }
+
+    .banner-inner {
+      padding: 14px 16px;
+      gap: 10px;
+    }
+
+    .ian-left {
+      align-items: flex-start;
+      text-align: left;
+      max-width: 100%;
+    }
+
+    .ian-btns {
+      flex-direction: column;
+    }
+
+    .ian-btn {
+      width: 100%;
+      max-width: 360px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="banner-inner">
+    <div class="ian-left">
+      <span class="ian-wave">👋</span>
+      <span class="ian-text"><strong>Hi Ian!</strong> I went ahead and created two material samples specifically for DataGrail — a full blog post and a branded hero image workflow.</span>
+    </div>
+    <div class="ian-btns">
+      <a href="blog.html" target="_blank" class="ian-btn solid">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        AI Risk Assessment Blog Post
+      </a>
+      <a href="YOUR_WORKFLOW_URL" target="_blank" class="ian-btn solid">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        Brand Hero Image Workflow
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="rh-name">Jo Antonette Segador</div>
+  <div class="rh-title">AI Design &amp; Content Systems Specialist</div>
+  <div class="rh-contact">
+    joanton.com<span class="csep">•</span>
+    <a href="https://www.linkedin.com/in/joantonettesegador/">linkedin.com/in/joantonettesegador</a><span class="csep">•</span>
+    joanton.segador@gmail.com<span class="csep">•</span>+639293955088
+  </div>
+  <div class="rh-portfolio">
+    SEO Portfolio: <a href="https://joanton.com/seo/">joanton.com/seo</a>
+    <span class="csep">•</span>
+    Design Portfolio: <a href="https://joanton.com/design">joanton.com/design</a>
+  </div>
+
+  <hr class="rule">
+
+  <div class="sh">Profile</div>
+  <p class="profile">Multidisciplinary creative with 6+ years across 3D animation, character art, graphic design, and AI-driven content systems. Trained under Japanese CG supervisors at Toei Animation on One Piece, Dragon Ball Super, and Saint Seiya. Now applying that visual-first thinking to AI graphic design workflows, brand content, and scalable copy systems — deploying AI tools thoughtfully across design, writing, and production pipelines.</p>
+
+  <hr class="rule-thin">
+
+  <div class="sh">Core Skills</div>
+  <div class="skills">
+    <div class="sr"><strong>AI Design &amp; Content:</strong> <span>AI Image Generation (Midjourney, openArt, GPT Image 2), Brand Asset Creation, Visual Direction, Layout &amp; Composition, Graphic Design, Copy at Scale, Blog &amp; Web Copy</span></div>
+    <div class="sr"><strong>Automation &amp; Systems:</strong> <span>AirOps Pipeline Architecture, Prompt Engineering, Content Refresh &amp; QA Workflows, Brand Voice Preservation, SEO Content Systems</span></div>
+    <div class="sr"><strong>Creative Production:</strong> <span>3D Modeling &amp; Animation, Character Art, Autodesk Maya, ZBrush, Unreal Engine, Pixotope VR, Descript</span></div>
+    <div class="sr"><strong>Tools:</strong> <span>Figma, Adobe Creative Suite, Canva, Kittl, AirOps, Semrush, Webflow, WordPress, Squarespace, Weavy, Descript, CapCut, openArt, Google Workspace</span></div>
+  </div>
+
+  <hr class="rule-thin">
+
+  <div class="sh">Professional Experience</div>
+
+  <div class="job">
+    <div class="jhead"><span class="jtitle">Marketing Manager Lead</span><span class="jsep">|</span><span class="jco">WOKEN</span><span class="jsep">|</span><span class="jco">Remote</span><span class="jsep">|</span><span class="jdate">2025 – Present</span></div>
+    <ul class="bl">
+      <li>Design brand assets, social media visuals, and campaign creatives, maintaining a cohesive visual identity across all channels.</li>
+      <li>Deploy AI image generation tools (Midjourney, openArt) to produce on-brand graphic design at speed without sacrificing quality.</li>
+      <li>Develop and execute SEO content strategies including keyword research, on-page optimization, and content refresh workflows using AirOps automation.</li>
+      <li>Drive LinkedIn content and community engagement, building audience growth loops and nurturing prospective clients.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jhead"><span class="jtitle">Co-founder / AI SEO Systems Architect</span><span class="jsep">|</span><span class="jco">Butterflowy</span><span class="jsep">|</span><span class="jco">Delaware, USA</span><span class="jsep">|</span><span class="jdate">Nov 2024 – Present</span></div>
+    <ul class="bl">
+      <li>Architected an AI-driven content engine that publishes and refreshes high-quality SEO pieces at scale with under 2 hours of human touch time per week.</li>
+      <li>Standardized on-page SEO and visual asset production (hero images, captions, alt text) for priority URLs, enforcing design-consistent CMS QA checklists.</li>
+      <li>Built internal-linking and hub maintenance systems: hub/spoke maps, cross-link injections, link-integrity checks, and validated schema markup.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jhead"><span class="jtitle">AI Solutions Architect (Contract)</span><span class="jsep">|</span><span class="jco">AirOps</span><span class="jsep">|</span><span class="jco">San Francisco, USA</span><span class="jsep">|</span><span class="jdate">Jan – Apr 2025</span></div>
+    <ul class="bl">
+      <li>Built content refresh and creation pipelines for Docebo, Hypermode, Lionhead, and SEO Notebook &#8212; Webflow case study: 5x traffic in days.</li>
+      <li>Created a &#8220;Facts Updater&#8221; workflow that flags declining URLs, grabs updated stats and sources, and rewrites sections while preserving brand voice &#8212; cutting editorial audit time by 70%.</li>
+      <li>Automated the full content loop (keyword strategy &#8594; outline &#8594; draft &#8594; fact-check &#8594; publish) inside AirOps, reducing turnaround from 5 days to 24 hours.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jhead"><span class="jtitle">3D Generalist &amp; AI Design Lead</span><span class="jsep">|</span><span class="jco">SolidLeisure Solutions Inc.</span><span class="jsep">|</span><span class="jdate">Sep 2022 – Present</span></div>
+    <ul class="bl">
+      <li>Transitioned into a hybrid AI design role, producing graphic design assets using AI image generation tools (Midjourney, openArt) and integrating AI-assisted workflows into creative production.</li>
+      <li>Established and trained staff on an Unreal Engine-based production pipeline, elevating visual output and operational efficiency.</li>
+      <li>Pioneered and operated Pixotope VR in a live demo that secured executive buy-in, leading to adoption of live 3D VR shows.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jhead"><span class="jtitle">3D Character Artist</span><span class="jsep">|</span><span class="jco">Mighty Jaxx</span><span class="jsep">|</span><span class="jco">Singapore</span><span class="jsep">|</span><span class="jdate">Sep 2024</span></div>
+    <ul class="bl"><li>Created production-ready 3D figurine models for collectible toy products, ensuring accurate topology and fidelity to original concept art.</li></ul>
+  </div>
+
+  <div class="job">
+    <div class="jhead"><span class="jtitle">3D Creative Director</span><span class="jsep">|</span><span class="jco">Fullmetal Productions</span><span class="jsep">|</span><span class="jdate">Mar – Sep 2022</span></div>
+    <ul class="bl">
+      <li>Led game advertisement projects for Angry Birds 2, Streetball, and Yu-Gi-Oh!, overseeing artistic direction, lighting, and rendering.</li>
+      <li>Supervised post-production and visual quality, ensuring client deliverables met creative standards and deadlines.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="jhead"><span class="jtitle">3D Graphic Artist</span><span class="jsep">|</span><span class="jco">Toei Animation Philippines Inc.</span><span class="jsep">|</span><span class="jdate">Jun 2019 – Feb 2022</span></div>
+    <ul class="bl">
+      <li>Trained under Japanese CG supervisors, building a rigorous foundation in topology, UV setup, and texturing.</li>
+      <li>Produced rig-ready props and character models for One Piece 3D, Netflix&#8217;s Saint Seiya, and Dragon Ball Super: Super Hero under strict production deadlines.</li>
+    </ul>
+  </div>
+
+  <hr class="rule-thin">
+
+  <div class="sh">Education</div>
+  <div class="edu">
+    <div><div class="edeg">Bachelor of Science in Digital Illustration and Animation</div><div class="eschool">Ateneo de Naga University, Naga City, Bicol</div></div>
+    <span class="edate">March 2019</span>
+  </div>
+</div>
+</body>
+</html>
