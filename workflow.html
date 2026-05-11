@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFF8E8;
+    --paper:#FFFFFF;
+    --bg:#FFFFFF;
+    --ink:#111111;
+    --muted:#667085;
+    --orange:#B45309;
+    --orange-dark:#7C2D12;
+    --yellow:#F8DA82;
+    --navy:#0D3F4B;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#fff; color:var(--ink); font-family:Inter, Arial, sans-serif; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  a { color:var(--orange-dark); }
+  img { max-width:100%; }
+
+  .top-nav {
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#fff;
+    padding:14px 24px;
+  }
+  .top-nav-inner {
+    max-width:980px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .brand-link {
+    color:var(--navy);
+    font-weight:800;
+    text-decoration:none;
+    letter-spacing:-.02em;
+  }
+  .brand-link span { color:var(--orange); }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .nav-links a {
+    text-decoration:none;
+    color:#344054;
+    font-size:14px;
+    font-weight:700;
+    padding:8px 10px;
+    border-radius:6px;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    background:var(--cream);
+    color:var(--orange-dark);
+  }
+
+  .doc-shell { max-width:920px; margin:0 auto; padding:28px 24px 70px; }
+  .doc { background:#fff; padding:0; }
+  .capsule {
+    background:#fff;
+    color:#333;
+    border-radius:10px;
+    padding:16px 18px;
+    font-size:14px;
+    line-height:1.6;
+    margin:0 0 24px;
+    box-shadow:0 8px 26px rgba(0,0,0,.05);
+  }
+  h1 { margin:22px 0 12px; font-size:42px; line-height:1.12; letter-spacing:-.045em; color:#111827; }
+  h2 { margin:42px 0 12px; font-size:27px; line-height:1.24; letter-spacing:-.025em; color:#111827; }
+  h3 { margin:28px 0 8px; font-size:19px; line-height:1.35; color:#1f2937; }
+  p { margin:0 0 16px; }
+  ul { margin:8px 0 22px; padding-left:22px; }
+  li { margin:7px 0; }
+  li::marker { color:var(--orange); }
+
+  .hero-carousel { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:8px; margin:0 0 24px; background:#0D3F4B; }
+  .hero-carousel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s ease; }
+  .hero-carousel img.active { opacity:1; }
+  .carousel-dots { position:absolute; left:50%; bottom:10px; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
+  .carousel-dots span { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.62); }
+  .carousel-dots span.active { background:var(--yellow); }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:800; font-size:13px; color:#4A2503; background:var(--yellow); border-radius:6px; padding:9px 12px; }
+  .btn:hover { background:var(--cream); }
+  figure { margin:28px 0; }
+  figure img { display:block; width:100%; border-radius:8px; background:#fff; }
+  figcaption { font-size:13px; color:#667085; margin-top:8px; }
+  .table-wrap { overflow:auto; margin:20px 0 26px; }
+  table { width:100%; border-collapse:collapse; min-width:620px; background:#fff; }
+  th,td { padding:10px 12px; text-align:left; vertical-align:top; }
+  th { background:#fff; color:#1f2937; font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+  .badge { display:inline-block; padding:3px 7px; border-radius:6px; background:var(--cream); color:#6B3705; font-weight:700; font-size:12px; }
+  .faq { padding:10px 0; margin:10px 0; background:#fff; }
+  .faq summary { cursor:pointer; font-weight:800; color:#1f2937; }
+  .faq p { margin:10px 0 0; }
+  .cta-line { font-weight:800; color:var(--orange-dark); background:#fff; padding:0; }
+  .resource-line { color:#475467; }
+  .doc-grid { display:grid; grid-template-columns:1fr; gap:22px; }
+  .image-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
+  .image-grid figure { margin:0; }
+  .wide { grid-column:1 / -1; }
+  @media(max-width:900px){.doc-shell{padding:18px 16px 54px}h1{font-size:34px}.image-grid{grid-template-columns:1fr}.wide{grid-column:auto}.top-nav{padding:12px 14px}.top-nav-inner{align-items:flex-start}.nav-links{width:100%}}
+</style><title>DataGrail Brand Hero Image Workflow</title></head><body><nav class="top-nav"><div class="top-nav-inner"><a class="brand-link" href="index.html">Jo Antonette <span>× DataGrail</span></a><div class="nav-links"><a href="index.html">Resume</a><a href="blog.html">Blog Sample</a><a class="active" href="workflow.html">Design Workflow</a></div></div></nav><main class="doc-shell"><article class="doc">
+<h1>DataGrail Brand Hero Image Workflow</h1>
+<p id="overview">I built this workflow to show how a blog title can move from AEO-ready content into branded hero image options that feel aligned with DataGrail’s visual identity.</p>
+<figure><img src="hero-01.png" alt="DataGrail-style isometric SaaS hero illustration"><figcaption>Generated hero image option for the AI risk assessment blog sample.</figcaption></figure>
+<h2 id="process">Process</h2>
+<p>So I wanted to increase my chances of getting this role, so I built a workflow aligned with what DataGrail needed.</p>
+<p>Let’s say you wanted a blog. Not just any blog — one that is AEO-citable, well imbued with internal links and external links, and routed through several QA passes. Once the content is ready, the next step is creating a hero image that matches DataGrail’s style identity.</p>
+<h3>1. Start with the blog title</h3>
+<p>The workflow begins with the article title and uses it as the core source of context.</p>
+<h3>2. Expand the title into visual concepts</h3>
+<p>From there, the title is expanded to ideate what could best represent the topic visually.</p>
+<h3>3. Generate brand-coded image prompts</h3>
+<p>Then it proceeds to generate prompts for the actual images, with hard-coded style rules to keep the output close to DataGrail’s brand identity.</p>
+<h3>4. Route the icon into several compositions</h3>
+<p>After the icon direction is created, the workflow routes it into several composition options so the final step is choosing the strongest layout.</p>
+<h2 id="documentation">Documentation Images</h2>
+<div class="doc-grid">
+<figure><img src="workflow-title-input.png" alt="Workflow screenshot showing the blog title input"><figcaption>The blog title enters the workflow as the starting context.</figcaption></figure>
+<figure><img src="workflow-ideation.png" alt="Workflow screenshot showing visual concept generation"><figcaption>The workflow expands the title into visual concepts and metaphors.</figcaption></figure>
+<figure><img src="workflow-icon-generation.png" alt="Workflow screenshot showing icon and prompt generation"><figcaption>The selected concept becomes a brand-coded prompt and icon direction.</figcaption></figure>
+<figure><img src="workflow-composition-routing.png" alt="Workflow screenshot showing multiple composition routes"><figcaption>The image concept is routed into multiple composition treatments.</figcaption></figure>
+</div>
+<h2 id="results">Final Hero Image Options</h2>
+<div class="image-grid">
+<figure class="wide"><img src="hero-01.png" alt="Final isometric DataGrail-style workflow illustration"><figcaption>Option 1: isometric workflow scene showing data intake, assessment, security, and compliance systems.</figcaption></figure>
+<figure><img src="hero-02.png" alt="AI risk assessment hero image with pale background"><figcaption>Option 2: pale DataGrail-style layout with dark patterned right panel.</figcaption></figure>
+<figure><img src="hero-03.png" alt="AI risk assessment hero image with dark DataGrail-style background"><figcaption>Option 3: darker, higher-contrast DataGrail-inspired layout.</figcaption></figure>
+<figure><img src="hero-04.png" alt="Simplified AI risk assessment hero image"><figcaption>Option 4: simplified layout with more whitespace and fewer background elements.</figcaption></figure>
+</div>
+
+</article></main></body></html>

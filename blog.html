@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FFF8E8;
+    --paper:#FFFFFF;
+    --bg:#FFFFFF;
+    --ink:#111111;
+    --muted:#667085;
+    --orange:#B45309;
+    --orange-dark:#7C2D12;
+    --yellow:#F8DA82;
+    --navy:#0D3F4B;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#fff; color:var(--ink); font-family:Inter, Arial, sans-serif; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  a { color:var(--orange-dark); }
+  img { max-width:100%; }
+
+  .top-nav {
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#fff;
+    padding:14px 24px;
+  }
+  .top-nav-inner {
+    max-width:980px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .brand-link {
+    color:var(--navy);
+    font-weight:800;
+    text-decoration:none;
+    letter-spacing:-.02em;
+  }
+  .brand-link span { color:var(--orange); }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .nav-links a {
+    text-decoration:none;
+    color:#344054;
+    font-size:14px;
+    font-weight:700;
+    padding:8px 10px;
+    border-radius:6px;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    background:var(--cream);
+    color:var(--orange-dark);
+  }
+
+  .blog-layout { max-width:1180px; margin:0 auto; padding:28px 24px 70px; display:grid; grid-template-columns:220px minmax(0, 920px); gap:34px; align-items:start; }
+  .section-nav { position:sticky; top:78px; font-size:13px; line-height:1.35; }
+  .section-nav-title { font-weight:800; color:#111827; margin:0 0 10px; }
+  .section-nav a { display:block; color:#475467; text-decoration:none; padding:5px 0; }
+  .section-nav a:hover { color:var(--orange-dark); background:var(--cream); }
+  .doc-shell { max-width:920px; margin:0; padding:0; }
+  .doc { background:#fff; padding:0; }
+  .capsule {
+    background:var(--cream);
+    color:#333;
+    border-radius:10px;
+    padding:16px 18px;
+    font-size:14px;
+    line-height:1.6;
+    margin:0 0 24px;
+    box-shadow:none;
+  }
+  h1 { margin:22px 0 12px; font-size:42px; line-height:1.12; letter-spacing:-.045em; color:#111827; }
+  h2 { margin:42px 0 12px; font-size:27px; line-height:1.24; letter-spacing:-.025em; color:#111827; }
+  h3 { margin:28px 0 8px; font-size:19px; line-height:1.35; color:#1f2937; }
+  p { margin:0 0 16px; }
+  ul { margin:8px 0 22px; padding-left:22px; }
+  li { margin:7px 0; }
+  li::marker { color:var(--orange); }
+
+  .hero-carousel { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:8px; margin:0 0 24px; background:#0D3F4B; border:1px solid #E7DCCA; }
+  .hero-carousel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s ease; }
+  .hero-carousel img.active { opacity:1; }
+  .carousel-dots { position:absolute; left:50%; bottom:10px; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
+  .carousel-dots span { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.62); }
+  .carousel-dots span.active { background:var(--yellow); }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:800; font-size:13px; color:#4A2503; background:var(--yellow); border-radius:6px; padding:9px 12px; }
+  .btn:hover { background:var(--cream); }
+  figure { margin:28px 0; }
+  figure img { display:block; width:100%; border-radius:8px; background:#fff; border:1px solid #E7DCCA; }
+  figcaption { font-size:13px; color:#667085; margin-top:8px; }
+  .table-wrap { overflow:auto; margin:20px 0 26px; }
+  table { width:100%; border-collapse:collapse; min-width:620px; background:#fff; }
+  th,td { padding:10px 12px; text-align:left; vertical-align:top; }
+  th { background:#fff; color:#1f2937; font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+  .badge { display:inline-block; padding:3px 7px; border-radius:6px; background:var(--cream); color:#6B3705; font-weight:700; font-size:12px; }
+  .faq { padding:10px 0; margin:10px 0; background:#fff; }
+  .faq summary { cursor:pointer; font-weight:800; color:#1f2937; }
+  .faq p { margin:10px 0 0; }
+  .cta-line { font-weight:800; color:var(--orange-dark); background:#fff; padding:0; }
+  .cta-line a { color:var(--orange-dark); text-decoration:none; }
+  .cta-line a:hover { background:var(--cream); }
+  .resource-line { color:#475467; }
+  .doc-grid { display:grid; grid-template-columns:1fr; gap:22px; }
+  .image-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
+  .image-grid figure { margin:0; }
+  .wide { grid-column:1 / -1; }
+  @media(max-width:900px){.blog-layout{display:block;padding:18px 16px 54px}.section-nav{display:none}.doc-shell{padding:0}h1{font-size:34px}.image-grid{grid-template-columns:1fr}.wide{grid-column:auto}.top-nav{padding:12px 14px}.top-nav-inner{align-items:flex-start}.nav-links{width:100%}}
+</style><title>How to Conduct an AI Risk Assessment: A Practical Guide for Privacy Teams</title><meta name="description" content="AI systems now trigger mandatory risk assessments under GDPR, the EU AI Act, and US state laws. Here&#x27;s how to conduct one — and what changes when AI is involved."></head><body><nav class="top-nav"><div class="top-nav-inner"><a class="brand-link" href="index.html">Jo Antonette <span>× DataGrail</span></a><div class="nav-links"><a href="index.html">Resume</a><a class="active" href="blog.html">Blog Sample</a><a href="workflow.html">Design Workflow</a></div></div></nav><div class="blog-layout"><aside class="section-nav"><div class="section-nav-title">Sections</div><a href="#key-takeaways">Key Takeaways</a><a href="#what-is-an-ai-risk-assessment">What Is an AI Risk Assessment?</a><a href="#when-is-an-ai-risk-assessment-required">When Is an AI Risk Assessment Required?</a><a href="#how-an-ai-risk-assessment-differs-from-a-standard-dpia">How an AI Risk Assessment Differs from a Standard DPIA</a><a href="#how-to-conduct-an-ai-risk-assessment">How to Conduct an AI Risk Assessment</a><a href="#what-each-regulation-requires-a-quick-reference">What Each Regulation Requires: A Quick Reference</a><a href="#common-mistakes-privacy-teams-make">Common Mistakes Privacy Teams Make</a><a href="#how-automation-changes-the-equation">How Automation Changes the Equation</a><a href="#frequently-asked-questions">Frequently Asked Questions</a><a href="#the-bottom-line">The Bottom Line</a></aside><main class="doc-shell"><article class="doc">
+<div class="capsule">This is a sample blog post developed as part of an independent content audit and topic research exercise on DataGrail&#x27;s blog. I checked the SERP for the primary keyword, analyzed competing results and People Also Ask patterns, and used that research to shape the angle, outline, FAQs, internal linking opportunities, and AEO-friendly structure. The competitive analysis, SEO/AEO ratings, topic recommendation, SERP and PAA research, outline, and full draft were all produced independently — without internal access — based on DataGrail&#x27;s public blog, product documentation, competitor landscape research, and primary regulatory sources. It is submitted as a work sample to demonstrate content strategy, SEO/AEO execution, and editorial production capabilities.</div>
+<div class="hero-carousel" aria-label="Auto-rotating DataGrail-style hero image concepts"><img class="active" src="hero-01.png" alt="DataGrail-style isometric privacy workflow hero image"><img src="hero-02.png" alt="DataGrail-style AI risk assessment hero image on pale background"><img src="hero-03.png" alt="DataGrail-style AI risk assessment hero image on dark background"><img src="hero-04.png" alt="DataGrail-style simplified AI risk assessment hero image"><div class="carousel-dots"><span class="active"></span><span></span><span></span><span></span></div></div>
+<h1>How to Conduct an AI Risk Assessment: A Practical Guide for Privacy Teams</h1>
+<p>AI systems now trigger mandatory risk assessments under GDPR, the EU AI Act, and US state laws. Here&#x27;s how to conduct one — and what changes when AI is involved.</p>
+
+
+<p>The <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer">EU AI Act</a>&#x27;s high-risk AI obligations take full effect August 2, 2026. For US privacy teams, Colorado&#x27;s AI Act is already in force. The <a href="https://cppa.ca.gov/announcements/2025/20250923.html" target="_blank" rel="noopener noreferrer">CPRA</a> has required privacy risk assessments since January 1, 2026.</p><p>An AI risk assessment is a structured process used to identify, evaluate, and mitigate the risks that an AI system poses to individuals&#x27; rights and freedoms — specifically how it processes personal data and whether it makes automated decisions that affect people&#x27;s lives. It goes beyond a standard DPIA. AI systems retrain, drift, and change behavior after deployment. The regulations that govern them now span three continents. And the deadline to have your governance in order is no longer theoretical.</p><section class="takeaways"><h2 id="key-takeaways">Key Takeaways</h2><ul>
+<li>An AI risk assessment evaluates how an AI system processes personal data and affects individuals&#x27; rights</li>
+<li>It is required under <a href="https://gdpr-info.eu/art-35-gdpr/" target="_blank" rel="noopener noreferrer">GDPR Article 35</a>, <a href="https://artificialintelligenceact.eu/article/27/" target="_blank" rel="noopener noreferrer">EU AI Act Article 27</a> (FRIA), CPRA, and the <a href="https://leg.colorado.gov/bills/sb24-205" target="_blank" rel="noopener noreferrer">Colorado AI Act</a></li>
+<li>It differs from a standard DPIA because AI systems can retrain, drift, and produce automated decisions long after launch</li>
+<li>For high-risk AI in the EU, both a DPIA and a Fundamental Rights Impact Assessment are required — run the DPIA first, then expand it</li>
+<li>Discovery has to come before assessment: you cannot evaluate systems you don&#x27;t know exist</li>
+</ul></section>
+<h2 id="what-is-an-ai-risk-assessment">What Is an AI Risk Assessment?</h2>
+<p>An AI risk assessment is an evaluation of how an artificial intelligence system collects, uses, and processes personal data, what automated decisions it makes, and what harm those activities could cause to individuals. It is not a single document type — it is a process that produces documentation satisfying requirements under several overlapping regulatory frameworks depending on where your organization operates and what your AI does.</p>
+<p>There are two main assessment types privacy teams need to understand.</p>
+<h3>AI DPIA (Data Protection Impact Assessment for AI)</h3>
+<p>A DPIA is required under GDPR Article 35 whenever a processing activity is &quot;likely to result in a high risk to the rights and freedoms of natural persons.&quot; AI systems that make automated decisions, use biometric data, profile individuals, or process personal data at scale almost always meet this threshold. The assessment must be completed before the processing begins — not after the tool is already live.</p>
+<p>The DPIA asks three core questions: what personal data is being used, what risks that use creates for individuals, and how those risks are being mitigated. Deployers of high-risk AI in the EU who are also subject to GDPR must run a DPIA as a prerequisite — and then extend it.</p>
+<h3>Fundamental Rights Impact Assessment (FRIA)</h3>
+<p>The FRIA is a newer requirement introduced by EU AI Act Article 27, applicable to deployers of high-risk AI systems. It covers a broader set of concerns than the DPIA: not just data protection, but discrimination, access to essential services, safety, and the right to explanation.</p>
+<p>The EU AI Act explicitly states that the DPIA and FRIA should be run in sequence, not in parallel. Complete the DPIA first. Then expand it to address the fundamental rights dimensions the AI Act requires. Organizations that have already invested in GDPR compliance infrastructure have a material head start.</p>
+<h3>US-Equivalent Assessments</h3>
+<p>In the United States, there is no single federal mandate, but state laws are creating real obligations fast. California&#x27;s CPRA requires &quot;Privacy Risk Assessments&quot; for high-risk processing activities — effective January 1, 2026. Colorado&#x27;s AI Act (SB 24-205) mandates algorithmic impact assessments for consequential AI decisions in housing, employment, and lending — effective June 30, 2026. The <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST AI Risk Management Framework</a> (AI RMF) provides the de facto operational standard for teams building US-facing governance programs.</p>
+<figure><img src="https://docs.datagrail.io/assets/images/rimo-process-assessment-ddc19aa4eaeba8b26c0d237289a2d77e.png" alt="Assessment Overview" loading="lazy"><figcaption><a href="https://www.datagrail.io/platform/risk-assessments/" target="_blank" rel="noopener noreferrer">DataGrail Risk Assessments</a> supports DPIA, PIA, AI risk assessments, and custom templates within a single workflow.</figcaption></figure>
+<h2 id="when-is-an-ai-risk-assessment-required">When Is an AI Risk Assessment Required?</h2>
+<p>Not every AI tool triggers a formal assessment. But more qualify than most teams expect — and the ones that do tend to be the same tools your product, HR, and marketing teams are already using.</p>
+<h3>GDPR Triggers</h3>
+<p>European data protection authorities have identified categories of processing that almost always require a DPIA. If your AI system falls into any of the following, you need one:</p><ul>
+<li>Using new or novel technologies such as ML or AI — nearly any commercially deployed AI tool qualifies as &quot;novel&quot; in the GDPR&#x27;s sense, because its outputs are probabilistic rather than deterministic</li>
+<li>Automated decision-making with legal or significant effect — hiring tools, credit scoring models, content moderation systems, insurance pricing engines</li>
+<li>Large-scale processing of personal data — customer analytics platforms, behavioral profiling at scale</li>
+<li>Special categories of personal data — health data, biometric data, data about children, political opinions</li>
+<li>Systematic monitoring of behavior — employee productivity monitoring, location tracking, web behavior analytics</li>
+<li>Profiling individuals — any system that infers characteristics, preferences, or risk scores about people</li>
+</ul>
+<h3>EU AI Act High-Risk Categories (Annex III)</h3>
+<p><a href="https://artificialintelligenceact.eu/article/6/" target="_blank" rel="noopener noreferrer">EU AI Act Article 6</a> defines the classification logic for high-risk AI systems. Unacceptable-risk practices are prohibited. High-risk systems face mandatory assessment, documentation, and human oversight requirements before August 2, 2026.</p>
+<div class="table-wrap"><table><thead><tr><th>AI Use Case</th><th>Risk Classification</th></tr></thead><tbody><tr><td>Recruitment screening / CV filtering</td><td><span class="badge">High-risk</span></td></tr><tr><td>Credit scoring / loan decisions</td><td><span class="badge">High-risk</span></td></tr><tr><td>Insurance pricing</td><td><span class="badge">High-risk</span></td></tr><tr><td>Student performance evaluation</td><td><span class="badge">High-risk</span></td></tr><tr><td>Biometric identification</td><td><span class="badge">High-risk</span></td></tr><tr><td>Medical device decision support</td><td><span class="badge">High-risk</span></td></tr><tr><td>Law enforcement profiling</td><td><span class="badge">High-risk</span></td></tr><tr><td>Emotion recognition in the workplace</td><td><span class="badge">Prohibited (since February 2025)</span></td></tr><tr><td>Social scoring by government</td><td><span class="badge">Prohibited</span></td></tr><tr><td>Customer service chatbot (no consequential decisions)</td><td><span class="badge">Limited risk</span></td></tr><tr><td>Internal document summarization</td><td><span class="badge">Minimal risk</span></td></tr><tr><td>Spam filter</td><td><span class="badge">Minimal risk</span></td></tr></tbody></table></div>
+<p>One important note: any AI system that profiles individuals — meaning it uses automated processing to assess their work performance, economic situation, health, preferences, behavior, or location — is always considered high-risk under Annex III, regardless of the industry or use case.</p>
+<h3>US Triggers</h3>
+<p>California&#x27;s CPRA requires privacy risk assessments before processing activities that involve sensitive personal information, automated decision-making, or large-scale profiling of consumers. These obligations became enforceable January 1, 2026 — meaning assessments that haven&#x27;t been completed are already overdue.</p>
+<p>Colorado&#x27;s AI Act (SB 24-205) requires developers and deployers of high-risk AI making consequential decisions in housing, employment, education, and financial services to implement risk management programs that include mandatory impact assessments and consumer disclosures. Effective date: June 30, 2026.</p>
+<p>Shadow AI complicates both. If an employee is using an AI tool that IT didn&#x27;t deploy and legal didn&#x27;t review, it may still be processing personal data — and your organization may still be the data controller. You can&#x27;t assess systems you don&#x27;t know exist.</p>
+<h2 id="how-an-ai-risk-assessment-differs-from-a-standard-dpia">How an AI Risk Assessment Differs from a Standard DPIA</h2>
+<p>If you&#x27;ve been running DPIAs for years, you have a foundation. But AI introduces three specific complications that standard DPIA programs aren&#x27;t built to handle.</p>
+<h3>AI Systems Change After Deployment</h3>
+<p>A traditional DPIA assesses a static system at a point in time. An AI model can retrain on new data, be fine-tuned by a vendor, or shift its outputs in response to changing inputs — all without any code deployment on your end. A DPIA completed at launch may not reflect how the system is actually processing data six months later. AI risk assessment programs need scheduled renewal cycles built in, not optional follow-ups.</p>
+<h3>Automated Decision-Making Adds a New Rights Layer</h3>
+<p>Standard DPIAs focus on data protection. AI assessments must also address GDPR Article 22 — the right not to be subject to decisions based solely on automated processing. They must address the EU AI Act&#x27;s new Article 86, which gives individuals the right to explanation for any decision made by a high-risk AI system that significantly affects them. And they must address anti-discrimination obligations across employment, lending, and public services. The FRIA exists precisely because a data-focused lens isn&#x27;t wide enough for what AI does.</p>
+<h3>Shadow AI Makes Discovery Harder</h3>
+<p>With traditional software, IT knows what&#x27;s deployed. With AI, employees adopt tools — ChatGPT, Gemini, Grammarly, Notion AI, Salesforce Einstein — before any formal review happens. Research has found that 1 in 5 organizations has experienced a breach attributable to shadow AI. The implication for risk assessment programs is structural: discovery must precede assessment, and discovery requires connecting to the systems where AI adoption actually shows up — your identity provider, your SSO logs, your SaaS connections.</p>
+<figure><img src="https://docs.datagrail.io/assets/images/risk-timeline-54ce5a3bff4a1dec6e3ca900e7a301d3.png" alt="Risk Timeline" loading="lazy"><figcaption>Risk management for AI is a continuous cycle of identification, assessment, tracking, and mitigation — not a one-time project.</figcaption></figure>
+<h2 id="how-to-conduct-an-ai-risk-assessment">How to Conduct an AI Risk Assessment</h2>
+<p>Here is the process privacy teams can follow, from discovery through documentation and renewal.</p>
+<h3>Step 1 — Inventory Your AI Systems</h3>
+<p>You cannot assess risk in systems you haven&#x27;t identified. Start by building or updating your AI system inventory to include:</p><ul>
+<li>IT-sanctioned tools — tools procured through formal vendor review (documented)</li>
+<li>AI features embedded in existing SaaS — often undocumented; Salesforce Einstein, HubSpot AI, Zendesk AI, Microsoft Copilot, and hundreds of others have embedded AI capabilities that may now qualify as high-risk processing</li>
+<li>Shadow AI — tools adopted by departments without formal review; this is where the real exposure lives</li>
+</ul>
+<p>The most practical starting point is connecting your identity provider (Okta, Microsoft Entra ID, Google Workspace) to surface every SaaS application connected to your organization. Daily scans catch new tools as they&#x27;re added, rather than relying on employees to self-report.</p>
+<figure><img src="https://docs.datagrail.io/assets/images/risk-register-overview-b7896295d6b01d0c820a4dcb9ec8b150.png" alt="Risk Register Overview" loading="lazy"><figcaption><a href="https://docs.datagrail.io/docs/risk-management/risk-register/overview/" target="_blank" rel="noopener noreferrer">DataGrail&#x27;s Risk Register</a> tracks identified risks, mitigation status, ownership, and due dates across your full AI inventory.</figcaption></figure>
+<h3>Step 2 — Classify Each System by Risk Level</h3>
+<p>Not every AI tool needs the same depth of review. A tiered approach prevents assessment paralysis while ensuring the highest-risk systems get the attention the law requires.</p>
+<p>Tier 1 — Full DPIA + FRIA required: Systems that make or materially influence consequential decisions about people — hiring, lending, healthcare, access to public services, insurance pricing, or law enforcement. These require formal assessment before deployment, human-in-the-loop oversight, and audit-ready documentation.</p>
+<p>Tier 2 — DPIA recommended: Systems that process large volumes of personal data, use behavioral profiling, or involve special categories of data (health, biometric, <a href="https://www.datagrail.io/blog/data-privacy/what-organizations-need-to-know-about-protecting-childrens-data-in-the-age-of-ai/" target="_blank" rel="noopener noreferrer">children&#x27;s</a>). No EU AI Act conformity assessment required, but GDPR Article 35 almost certainly applies.</p>
+<p>Tier 3 — Lightweight review: Internal productivity tools with no personal data output and no consequential decisions. Document the classification and the rationale. Under the EU AI Act, providers of systems they believe are not high-risk must document that assessment before going to market.</p>
+<h3>Step 3 — Gather Information About the System</h3>
+<p>For each system in Tier 1 or Tier 2, document the following before completing the assessment:</p><ul>
+<li>What personal data is collected, from whom, and under what legal basis</li>
+<li>How the model was trained, and whether training data included personal data</li>
+<li>Whether training data can be reproduced in model outputs (right to erasure risk)</li>
+<li>Which third-party subprocessors are involved, and where data is processed geographically</li>
+<li>Whether the system makes automated decisions with legal or significant effect</li>
+<li>Retention settings and whether data minimization practices are implemented</li>
+<li>Security controls: access controls, encryption, prompt filtering, output controls</li>
+</ul>
+<p>Vendors are required to provide much of this information under GDPR Article 28 and EU AI Act Article 13. If a vendor refuses to supply documentation about training data, subprocessors, or decision logic, that is itself a risk signal that belongs in your assessment.</p><p>The same system details should also connect back to the <a href="https://www.datagrail.io/blog/data-privacy/a-beginners-guide-to-creating-a-record-of-processing-activities-ropa-for-gdpr-beyond/" target="_blank" rel="noopener noreferrer">Record of Processing Activities</a>, so the risk assessment supports the broader privacy program instead of living as a disconnected document.</p>
+<figure><img src="https://docs.datagrail.io/assets/images/rimo-dpia-question-8497ef75e0d5612b74f213619559e0db.png" alt="DPIA Question Example" loading="lazy"><figcaption>DataGrail pre-populates assessment questions with system data from your live data map, reducing the manual research burden.</figcaption></figure>
+<h3>Step 4 — Assess Risk to Individuals</h3>
+<p>For each identified risk, evaluate it on two dimensions: likelihood (remote, possible, or probable) and severity (minor inconvenience through fundamental rights violation). Key categories to work through:</p>
+<p>Discriminatory outcomes — Does the AI system use proxies that could produce biased results across protected characteristics? Recruitment AI trained on historical hiring data is a well-documented example. Credit scoring models that use ZIP code as a proxy for race are another.</p>
+<p>Privacy violations — Can the model reproduce training data? Is sensitive personal information accessible through prompt injection? Does the system leak data across users in a multi-tenant deployment?</p>
+<p>Loss of autonomy — Can an individual appeal a decision the AI made? Is there a human in the loop for high-stakes outcomes? The EU AI Act&#x27;s Article 86 right to explanation specifically addresses this.</p>
+<p>Security vulnerabilities — Is the system protected against adversarial inputs, prompt injection, and model inversion attacks? Agentic AI systems that call APIs and tools without human oversight in the loop carry a meaningfully different attack surface than static classifiers.</p>
+<p>Reputational harm from inaccurate outputs — Hallucinations in customer-facing AI, inaccurate risk scores, and incorrect automated decisions all create legal exposure beyond the initial compliance question.</p>
+<h3>Step 5 — Identify and Document Mitigation Measures</h3>
+<p>For every identified risk, document what you&#x27;re doing about it. Regulators don&#x27;t just want a list of risks — they want evidence that you weighed the benefits against the harms and implemented proportionate controls.</p>
+<p>Technical controls: Data minimization (don&#x27;t collect what you don&#x27;t need), access controls, encryption in transit and at rest, output filtering for sensitive information, human-in-the-loop review gates for high-stakes decisions.</p>
+<p>Organizational controls: Approval workflows before new AI systems go live, audit logs for AI-influenced decisions, defined escalation paths when the AI produces an unexpected outcome, documented AI acceptable use policies.</p>
+<p>Contractual controls: Data processing agreements with AI vendors should address training data rights (is your data being used to train models for other customers?), subprocessor disclosure, breach notification timelines, and the right to audit.</p>
+<p>If residual risk remains high after controls are applied — meaning the harm is still probable and severe — GDPR Article 36 requires you to consult your supervisory authority before proceeding.</p>
+<h3>Step 6 — Assign Contributors and Route for Approval</h3>
+<p>AI risk assessment is not a single-person job. The privacy team, legal, engineering, and the system owner each hold different pieces of the information you need. A well-run assessment process assigns each stakeholder a specific contribution, sets a deadline, and routes to a DPO or <a href="https://docs.datagrail.io/docs/risk-management/risk-assessments/getting-started/" target="_blank" rel="noopener noreferrer">Risk Assessments Admin</a> for final approval before the PDF is locked.</p>
+<p>A contributor doesn&#x27;t need a DataGrail account to participate — they receive an invitation link, complete their section, and submit it. The assessment owner reviews all contributions before approving. Once approved, the assessment is locked and a downloadable PDF is generated for your audit record.</p>
+<figure><img src="https://docs.datagrail.io/assets/images/add-contributor-1dbbe002d6e85d36af20fbb2bda79d37.png" alt="Add Contributor" loading="lazy"><figcaption>DataGrail automatically sends contributors an email with a link to view and complete their portion of the assessment.</figcaption></figure>
+<h3>Step 7 — Set a Renewal Cycle and Treat It as a Living Document</h3>
+<p>A completed and approved assessment is not a permanent pass. In <a href="https://docs.datagrail.io/docs/risk-management/overview/" target="_blank" rel="noopener noreferrer">DataGrail Risk Management documentation</a>, the renewal cycle is treated as part of the assessment setup, not an afterthought. Set a renewal cycle at the time you create the assessment. Plan for a mandatory reassessment when any of the following occur:</p><ul>
+<li>The model is retrained on new or different data</li>
+<li>The system&#x27;s use case changes materially (e.g., a customer-facing chatbot is expanded to make credit eligibility decisions)</li>
+<li>A new regulation takes effect in a relevant jurisdiction</li>
+<li>Your data map shows new systems connecting to the same processing activity</li>
+<li>An incident occurs that calls your original risk analysis into question</li>
+</ul>
+<p>At a minimum, conduct a formal review annually. Assessments that go more than 180 days without review should trigger an automatic flag — the AI landscape and regulatory environment both move too fast for a &quot;set it and forget it&quot; approach.</p>
+<figure><img src="https://docs.datagrail.io/assets/images/rimo-create-assessment-a9b482932b2bda1ee03261866825e696.png" alt="Create Assessment" loading="lazy"><figcaption>When creating a new assessment in DataGrail, you set the renewal cycle upfront — ensuring assessments never quietly go stale.</figcaption></figure>
+<h2 id="what-each-regulation-requires-a-quick-reference">What Each Regulation Requires: A Quick Reference</h2>
+<div class="table-wrap"><table><thead><tr><th>Regulation</th><th>Assessment Type</th><th>When Required</th><th>Enforcement Deadline</th></tr></thead><tbody><tr><td>GDPR Article 35</td><td>DPIA</td><td>Before high-risk processing</td><td>Ongoing</td></tr><tr><td>EU AI Act Article 27</td><td>Fundamental Rights Impact Assessment (FRIA)</td><td>Before deploying high-risk AI</td><td>August 2, 2026</td></tr><tr><td>CPRA (California)</td><td>Privacy Risk Assessment</td><td>Sensitive data, automated decisions, large-scale profiling</td><td>January 1, 2026</td></tr><tr><td>Colorado AI Act (SB 24-205)</td><td>Algorithmic Impact Assessment</td><td>Consequential decisions — housing, employment, lending</td><td>June 30, 2026</td></tr><tr><td>LGPD (Brazil) Article 37</td><td>Data Protection Assessment</td><td>High-risk processing</td><td>Ongoing</td></tr></tbody></table></div>
+<p>On fines: Under GDPR, failing to conduct a required DPIA is a direct, standalone violation — fines up to €10 million or 2% of global annual revenue, separate from any underlying breach. Under the EU AI Act, non-compliance with high-risk AI obligations carries fines up to €15 million or 3% of global annual turnover. Regulators who find assessment gaps tend to dig deeper. A documentation failure is often the entry point for a much larger investigation.</p><p>For additional practitioner context, this draft cross-checked regulatory timing and DPIA/FRIA sequencing against public analysis from <a href="https://www.lowenstein.com/news-insights/publications/client-alerts/ai-platform-risk-assessments-why-2026-is-the-year-for-action-data-privacy" target="_blank" rel="noopener noreferrer">Lowenstein Sandler</a> and <a href="https://secureprivacy.ai/blog/eu-ai-act-2026-compliance" target="_blank" rel="noopener noreferrer">Secure Privacy</a>, then prioritized official regulatory sources for the final recommendations.</p>
+<h2 id="common-mistakes-privacy-teams-make">Common Mistakes Privacy Teams Make</h2>
+<p>For broader context on building operational controls instead of static policy docs, see DataGrail&#x27;s related article: <a href="https://www.datagrail.io/blog/ai-governance/when-ai-policies-arent-enough-why-real-governance-requires-controls-not-just-documents/" target="_blank" rel="noopener noreferrer">When AI Policies Aren&#x27;t Enough: Why Real Governance Requires Controls, Not Just Documents</a>.</p>
+<h3>Treating the EU AI Act and GDPR as Separate Programs</h3>
+<p>When AI processes personal data, both apply simultaneously. Building two parallel compliance tracks doubles the work and creates documentation inconsistencies that look bad in an audit. The right approach is one unified assessment that starts with the DPIA and expands into the FRIA. The EU AI Act explicitly endorses this sequencing — the two are designed to complement each other, not compete.</p>
+<h3>Only Assessing the AI Tools IT Procured</h3>
+<p>The systems your IT team knows about are not the systems creating the most exposure. Shadow AI — tools employees adopt independently — processes company data and sometimes customer personal data without any governance. A vendor risk questionnaire sent to your approved tools list won&#x27;t catch the AI writing assistant your marketing team started using last month. Discovery has to come first, and it has to be automated.</p>
+<h3>Completing One Assessment and Calling It Done</h3>
+<p>A DPIA approved at deployment is already starting to go stale. AI models retrain. Vendors update their infrastructure. New regulations come into force. The <a href="https://cppa.ca.gov/announcements/2025/20250923.html" target="_blank" rel="noopener noreferrer">CPPA</a>&#x27;s automated decision-making regulations begin enforcement in January 2027, meaning your current assessments may not satisfy requirements that are six months away. Build renewal cycles in from the beginning. Static governance for dynamic systems is compliance theater.</p>
+<h3>Skipping the Proportionality Analysis</h3>
+<p>Regulators don&#x27;t just want a list of risks. They want evidence that you weighed the benefits against the harms and made a documented judgment about necessity and proportionality. A DPIA that identifies ten risks and says &quot;mitigation: in progress&quot; is not a DPIA — it&#x27;s a placeholder. Incomplete assessments are enforceable violations under GDPR Article 35, not just sloppy documentation.</p>
+<h2 id="how-automation-changes-the-equation">How Automation Changes the Equation</h2>
+<p>Privacy teams running lean — which is most of them — can&#x27;t manually interview every system owner for every AI tool on an annual renewal cycle. The math doesn&#x27;t work. Automation addresses three specific bottlenecks.</p>
+<p>Discovery at scale. Connecting your SSO provider to a live data map surfaces AI tools employees are actually using, including the ones IT doesn&#x27;t know about. Daily scanning catches new tools as they&#x27;re added rather than relying on someone to remember to flag it.</p>
+<p>Pre-populated assessments. A platform with deep integration coverage already knows what most SaaS tools process. Pre-filled data categories, typical processing purposes, and known subprocessors reduce the research burden dramatically — you&#x27;re reviewing and confirming rather than building from scratch. <a href="https://www.datagrail.io/blog/ai-governance/what-is-an-ai-privacy-agent-and-why-its-not-the-same-as-a-copilot/" target="_blank" rel="noopener noreferrer">Vera, DataGrail&#x27;s AI agent</a>, goes further: it analyzes your live data map, uploaded documents like PRDs and DPAs, and your organization&#x27;s business context to suggest answers for all assessment questions, citing its sources so your team can review with confidence.</p>
+<p>Automated renewal tracking. Assessments that exceed their review cycle trigger automatic flags. When a new system is detected that connects to an existing processing activity, the relevant assessments surface for review. When a regulation changes, your team gets context about which assessments may need updating.</p><p>That is why a <a href="https://www.datagrail.io/blog/data-privacy/general-vs-purpose-built-picking-the-right-ai-for-your-privacy-program/" target="_blank" rel="noopener noreferrer">purpose-built AI approach for privacy programs</a> matters more than a generic AI layer. <a href="https://www.datagrail.io/solutions/ai-governance/" target="_blank" rel="noopener noreferrer">DataGrail for AI Governance</a> connects AI inventory, risk assessment, documentation, and renewal workflows inside the privacy operating system teams already use.</p>
+<figure><img src="https://docs.datagrail.io/assets/images/assessment-context-7fe6dde16d5d9e33f99a3ba80aa00779.png" alt="Assessment Context (Vera autofill)" loading="lazy"><figcaption>Vera uses your live privacy program data, uploaded documentation, and linked assessments to auto-suggest answers across every question.</figcaption></figure>
+<p>The goal is to shift assessment work from reactive (scrambling to document before an audit) to continuous (assessments that stay current because the program is built to maintain them).</p>
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<details class="faq"><summary>What is an AI risk assessment?</summary><p>An AI risk assessment is a structured process used to identify, evaluate, and mitigate risks to individuals&#x27; rights and freedoms that arise from how an AI system processes personal data or makes automated decisions. It is required under GDPR Article 35, the EU AI Act, and equivalent US state privacy laws including CPRA and the Colorado AI Act.</p></details>
+<details class="faq"><summary>Is an AI risk assessment the same as a DPIA?</summary><p>Not exactly. A DPIA focuses specifically on data protection risks under GDPR. An AI risk assessment is broader — it must also address bias, fundamental rights, explainability, and the dynamic behavior of AI systems that retrain or evolve after deployment. For high-risk AI in the EU, both a DPIA and a Fundamental Rights Impact Assessment (FRIA) are required under the EU AI Act. The two are designed to be run in sequence, not separately.</p></details>
+<details class="faq"><summary>When is an AI risk assessment legally required?</summary><p>Under GDPR, a DPIA is required before processing &quot;likely to result in high risk&quot; — including most AI systems that make automated decisions, use biometric data, or process data at scale. Under the EU AI Act, a FRIA is required for deployers of high-risk AI systems before deployment, with full enforcement beginning August 2, 2026. CPRA risk assessments took effect January 1, 2026. Colorado&#x27;s AI Act requires impact assessments for consequential AI decisions as of June 30, 2026.</p></details>
+<details class="faq"><summary>What AI systems are considered high-risk under the EU AI Act?</summary><p>The EU AI Act&#x27;s Annex III lists high-risk categories including AI used in recruitment and employment decisions, credit scoring, insurance pricing, medical device decision support, biometric identification, education and vocational training assessment, law enforcement, and immigration decisions. Any AI system that profiles individuals — automated processing that assesses their behavior, location, performance, economic situation, or preferences — is always considered high-risk.</p></details>
+<details class="faq"><summary>How is an AI risk assessment different from a vendor risk assessment?</summary><p>A vendor risk assessment evaluates whether a third-party supplier is trustworthy and secure as an organization. An AI risk assessment evaluates whether a specific AI system — regardless of who built it — is safe to deploy given the personal data it processes and the automated decisions it makes. You need both: vendor assessment during procurement, AI risk assessment before the system goes live with your users&#x27; data.</p></details>
+<details class="faq"><summary>How often does an AI risk assessment need to be updated?</summary><p>AI risk assessments should be renewed when the model is retrained on new data, when the use case changes materially, or when new regulations come into effect. At minimum, conduct a formal review annually. Unlike static software, AI systems can change behavior without any code change — assessments that were accurate at launch may not reflect actual risk six months later.</p></details>
+<details class="faq"><summary>What happens if you deploy a high-risk AI system without completing a risk assessment?</summary><p>Under GDPR, failure to conduct a required DPIA is a direct compliance violation — separate from any data breach — with fines up to €10 million or 2% of global annual revenue. Under the EU AI Act, non-compliance with high-risk AI obligations carries fines up to €15 million or 3% of global annual turnover. Regulators who find assessment gaps during an audit typically dig deeper into the privacy practices behind them. A documentation failure is frequently the entry point for a much larger investigation.</p></details>
+<h2 id="the-bottom-line">The Bottom Line</h2>
+<p>The AI risk assessment deadlines on the calendar right now — August 2026 for the EU AI Act, January 2026 for the CPRA, June 2026 for Colorado — are not future problems. For many organizations, they are current problems with assessments already overdue. The good news is that the work is learnable, the frameworks are documented, and the organizations that invested in GDPR compliance already have the foundation. What changes for AI is the need to treat assessment as a continuous operating discipline rather than a one-time project. Static governance for dynamic systems doesn&#x27;t hold.</p>
+<p class="cta-line"><a href="https://www.datagrail.io/demo/" target="_blank" rel="noopener noreferrer">See how DataGrail automates AI risk assessments with Vera → Request a demo</a></p>
+<p class="cta-line"><a href="https://www.datagrail.io/platform/risk-assessments/" target="_blank" rel="noopener noreferrer">Explore the DataGrail Privacy Assessments platform →</a></p>
+</article></main></div><script>
+  const slides = Array.from(document.querySelectorAll('.hero-carousel img'));
+  const dots = Array.from(document.querySelectorAll('.carousel-dots span'));
+  let currentSlide = 0;
+  function showSlide(index) {
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+  }
+  if (slides.length) {
+    setInterval(() => { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }, 3600);
+  }
+</script></body></html>

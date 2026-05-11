@@ -7,13 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --page-bg: #f0f0ee;
+    --page-bg: #ffffff;
     --paper: #ffffff;
     --ink: #1a1a1a;
     --muted: #555555;
     --accent: #B45309;
     --accent-dark: #92400E;
-    --accent-soft: #FFF7EA;
+    --accent-soft: #ffffff;
     --line: #dddddd;
   }
 
@@ -29,21 +29,21 @@
 
   /* ── BANNER ── */
   .banner {
-    background: var(--accent-soft);
+    background: #FFF8E8;
     padding: 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 3px 18px rgba(146, 64, 14, 0.12);
+    box-shadow: none;
     overflow: hidden;
   }
 
-  /* This creates the subtle pastel rainbow only when someone hovers over the banner. */
+  /* Cream by default, then a very subtle pastel rainbow only on hover. */
   .banner::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(120deg, #fff7ea 0%, #fde7f3 28%, #e7f0ff 55%, #e9f8ee 78%, #fff1dd 100%);
+    background: linear-gradient(120deg, #FDECEF 0%, #FFF7D6 34%, #EAF8EF 68%, #EAF4FF 100%);
     opacity: 0;
     transition: opacity 0.45s ease;
     pointer-events: none;
@@ -57,7 +57,7 @@
     padding: 18px 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 12px;
     position: relative;
@@ -78,6 +78,8 @@
     font-size: 22px;
     animation: wave 1.4s ease-in-out infinite;
     display: inline-block;
+    line-height: 1;
+    margin-top: 1px;
     transform-origin: 70% 70%;
     flex-shrink: 0;
   }
@@ -119,7 +121,7 @@
     justify-content: center;
     gap: 7px;
     padding: 9px 17px;
-    border-radius: 999px;
+    border-radius: 6px;
     font-size: 12.5px;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
@@ -137,15 +139,16 @@
   }
 
   .ian-btn.solid {
-    background: var(--accent);
-    color: #ffffff;
-    box-shadow: 0 2px 8px rgba(180, 83, 9, 0.20);
+    background: #F8DA82;
+    color: #4A2503;
+    border: none;
+    box-shadow: none;
   }
 
   .ian-btn.solid:hover {
-    background: var(--accent-dark);
+    background: #FFF8E8;
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(146, 64, 14, 0.24);
+    box-shadow: none;
   }
 
   /* ── PAGE ── */
@@ -153,7 +156,7 @@
     max-width: 860px;
     margin: 28px auto 60px;
     background: var(--paper);
-    box-shadow: 0 1px 16px rgba(0,0,0,0.09);
+    box-shadow: none;
     padding: 52px 60px;
   }
 
@@ -346,11 +349,11 @@
       <span class="ian-text"><strong>Hi Ian!</strong> I went ahead and created two material samples specifically for DataGrail — a full blog post and a branded hero image workflow.</span>
     </div>
     <div class="ian-btns">
-      <a href="blog.html" target="_blank" class="ian-btn solid">
+      <a href="blog.html" class="ian-btn solid">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         AI Risk Assessment Blog Post
       </a>
-      <a href="YOUR_WORKFLOW_URL" target="_blank" class="ian-btn solid">
+      <a href="workflow.html" class="ian-btn solid">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
         Brand Hero Image Workflow
       </a>
