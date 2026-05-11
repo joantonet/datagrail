@@ -5,7 +5,7 @@
   :root {
     --cream:#FFF8E8;
     --paper:#FFFFFF;
-    --bg:#FFFFFF;
+    --bg:#f0f0ee;
     --ink:#111111;
     --muted:#667085;
     --orange:#B45309;
@@ -15,7 +15,7 @@
   }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { margin:0; background:#fff; color:var(--ink); font-family:Inter, Arial, sans-serif; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:Inter, Arial, sans-serif; line-height:1.68; -webkit-font-smoothing:antialiased; }
   a { color:var(--orange-dark); }
   img { max-width:100%; }
 
@@ -57,8 +57,8 @@
     color:var(--orange-dark);
   }
 
-  .doc-shell { max-width:920px; margin:0 auto; padding:28px 24px 70px; }
-  .doc { background:#fff; padding:0; }
+  .doc-shell { max-width:920px; margin:28px auto 70px; padding:0 24px; }
+  .doc { background:#fff; padding:52px 60px; box-shadow:0 1px 16px rgba(0,0,0,0.09); }
   .capsule {
     background:#fff;
     color:#333;
@@ -87,7 +87,7 @@
   .btn { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:800; font-size:13px; color:#4A2503; background:var(--yellow); border-radius:6px; padding:9px 12px; }
   .btn:hover { background:var(--cream); }
   figure { margin:28px 0; }
-  figure img { display:block; width:100%; border-radius:8px; background:#fff; }
+  figure img { display:block; width:100%; border-radius:8px; background:#fff; border:1px solid #E7DCCA; }
   figcaption { font-size:13px; color:#667085; margin-top:8px; }
   .table-wrap { overflow:auto; margin:20px 0 26px; }
   table { width:100%; border-collapse:collapse; min-width:620px; background:#fff; }
@@ -103,7 +103,7 @@
   .image-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
   .image-grid figure { margin:0; }
   .wide { grid-column:1 / -1; }
-  @media(max-width:900px){.doc-shell{padding:18px 16px 54px}h1{font-size:34px}.image-grid{grid-template-columns:1fr}.wide{grid-column:auto}.top-nav{padding:12px 14px}.top-nav-inner{align-items:flex-start}.nav-links{width:100%}}
+  @media(max-width:900px){.doc-shell{padding:18px 16px 54px}.doc{padding:28px 20px}h1{font-size:34px}.image-grid{grid-template-columns:1fr}.wide{grid-column:auto}.top-nav{padding:12px 14px}.top-nav-inner{align-items:flex-start}.nav-links{width:100%}}
 </style><title>DataGrail Brand Hero Image Workflow</title></head><body><nav class="top-nav"><div class="top-nav-inner"><a class="brand-link" href="index.html">Jo Antonette <span>× DataGrail</span></a><div class="nav-links"><a href="index.html">Resume</a><a href="blog.html">Blog Sample</a><a class="active" href="workflow.html">Design Workflow</a></div></div></nav><main class="doc-shell"><article class="doc">
 <h1>DataGrail Brand Hero Image Workflow</h1>
 <p id="overview">I built this workflow to show how a blog title can move from AEO-ready content into branded hero image options that feel aligned with DataGrail’s visual identity.</p>

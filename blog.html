@@ -5,7 +5,7 @@
   :root {
     --cream:#FFF8E8;
     --paper:#FFFFFF;
-    --bg:#FFFFFF;
+    --bg:#f0f0ee;
     --ink:#111111;
     --muted:#667085;
     --orange:#B45309;
@@ -15,7 +15,7 @@
   }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { margin:0; background:#fff; color:var(--ink); font-family:Inter, Arial, sans-serif; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:Inter, Arial, sans-serif; line-height:1.68; -webkit-font-smoothing:antialiased; }
   a { color:var(--orange-dark); }
   img { max-width:100%; }
 
@@ -57,13 +57,13 @@
     color:var(--orange-dark);
   }
 
-  .blog-layout { max-width:1180px; margin:0 auto; padding:28px 24px 70px; display:grid; grid-template-columns:220px minmax(0, 920px); gap:34px; align-items:start; }
+  .blog-layout { max-width:1240px; margin:0 auto; padding:28px 24px 70px; display:grid; grid-template-columns:220px minmax(0, 920px); gap:34px; align-items:start; justify-content:center; }
   .section-nav { position:sticky; top:78px; font-size:13px; line-height:1.35; }
   .section-nav-title { font-weight:800; color:#111827; margin:0 0 10px; }
   .section-nav a { display:block; color:#475467; text-decoration:none; padding:5px 0; }
   .section-nav a:hover { color:var(--orange-dark); background:var(--cream); }
   .doc-shell { max-width:920px; margin:0; padding:0; }
-  .doc { background:#fff; padding:0; }
+  .doc { background:#fff; padding:52px 60px; box-shadow:0 1px 16px rgba(0,0,0,0.09); }
   .capsule {
     background:var(--cream);
     color:#333;
@@ -110,7 +110,7 @@
   .image-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
   .image-grid figure { margin:0; }
   .wide { grid-column:1 / -1; }
-  @media(max-width:900px){.blog-layout{display:block;padding:18px 16px 54px}.section-nav{display:none}.doc-shell{padding:0}h1{font-size:34px}.image-grid{grid-template-columns:1fr}.wide{grid-column:auto}.top-nav{padding:12px 14px}.top-nav-inner{align-items:flex-start}.nav-links{width:100%}}
+  @media(max-width:900px){.blog-layout{display:block;padding:18px 16px 54px}.section-nav{display:none}.doc-shell{padding:0}.doc{padding:28px 20px}h1{font-size:34px}.image-grid{grid-template-columns:1fr}.wide{grid-column:auto}.top-nav{padding:12px 14px}.top-nav-inner{align-items:flex-start}.nav-links{width:100%}}
 </style><title>How to Conduct an AI Risk Assessment: A Practical Guide for Privacy Teams</title><meta name="description" content="AI systems now trigger mandatory risk assessments under GDPR, the EU AI Act, and US state laws. Here&#x27;s how to conduct one — and what changes when AI is involved."></head><body><nav class="top-nav"><div class="top-nav-inner"><a class="brand-link" href="index.html">Jo Antonette <span>× DataGrail</span></a><div class="nav-links"><a href="index.html">Resume</a><a class="active" href="blog.html">Blog Sample</a><a href="workflow.html">Design Workflow</a></div></div></nav><div class="blog-layout"><aside class="section-nav"><div class="section-nav-title">Sections</div><a href="#key-takeaways">Key Takeaways</a><a href="#what-is-an-ai-risk-assessment">What Is an AI Risk Assessment?</a><a href="#when-is-an-ai-risk-assessment-required">When Is an AI Risk Assessment Required?</a><a href="#how-an-ai-risk-assessment-differs-from-a-standard-dpia">How an AI Risk Assessment Differs from a Standard DPIA</a><a href="#how-to-conduct-an-ai-risk-assessment">How to Conduct an AI Risk Assessment</a><a href="#what-each-regulation-requires-a-quick-reference">What Each Regulation Requires: A Quick Reference</a><a href="#common-mistakes-privacy-teams-make">Common Mistakes Privacy Teams Make</a><a href="#how-automation-changes-the-equation">How Automation Changes the Equation</a><a href="#frequently-asked-questions">Frequently Asked Questions</a><a href="#the-bottom-line">The Bottom Line</a></aside><main class="doc-shell"><article class="doc">
 <div class="capsule">This is a sample blog post developed as part of an independent content audit and topic research exercise on DataGrail&#x27;s blog. I checked the SERP for the primary keyword, analyzed competing results and People Also Ask patterns, and used that research to shape the angle, outline, FAQs, internal linking opportunities, and AEO-friendly structure. The competitive analysis, SEO/AEO ratings, topic recommendation, SERP and PAA research, outline, and full draft were all produced independently — without internal access — based on DataGrail&#x27;s public blog, product documentation, competitor landscape research, and primary regulatory sources. It is submitted as a work sample to demonstrate content strategy, SEO/AEO execution, and editorial production capabilities.</div>
 <div class="hero-carousel" aria-label="Auto-rotating DataGrail-style hero image concepts"><img class="active" src="hero-01.png" alt="DataGrail-style isometric privacy workflow hero image"><img src="hero-02.png" alt="DataGrail-style AI risk assessment hero image on pale background"><img src="hero-03.png" alt="DataGrail-style AI risk assessment hero image on dark background"><img src="hero-04.png" alt="DataGrail-style simplified AI risk assessment hero image"><div class="carousel-dots"><span class="active"></span><span></span><span></span><span></span></div></div>
